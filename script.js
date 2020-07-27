@@ -29,11 +29,73 @@ function writePassword() {
         var special = confirm("Do you want to include special characters?");
        }   
       
-    //varf testing  
-    //console.log(lower,upper,nums,special);
+    //var testing  
+    //console.log(passLength);
+    //console.log(lower);
+    //console.log(upper);
+    //console.log(nums);
+    //console.log(special);
 
     // function to generate the password //
-    function generatePassword() {    
+    function generatePassword() {  
+      var lowerChar = "abcdefghijklmnopqrstuvwxyz";
+      var upperChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      var numsChar = "0123456789";
+      var specialChar = "!@#$%^&*()_-+={}[];:'`~<,>.?/|"
+      var characters = "";
+      var password = "";
+
+      if (lower && upper && nums && special){
+      characters += lowerChar + upperChar + numsChar + specialChar;
+      }
+      if (upper && nums && special){
+      characters += upperChar + numsChar + specialChar;
+      }
+      else if (lower && upper && nums){
+      characters += lowerChar + upperChar + numsChar;
+      }
+      else if (upper && nums){
+      characters += upperChar + numsChar;
+      }
+      else if (lower && nums && special){
+      characters += lowerChar + numsChar + specialChar;
+      }
+      else if (nums && special){
+      characters += numsChar + specialChar;
+      }
+      else if (lower && upper && special){
+      characters += lowerChar + upperChar + specialChar;
+      }
+      else if (upper && special){
+      characters += upperChar + specialChar;
+      }
+      else if (lower && upper){
+        characters += lowerChar + upperChar;
+      }
+      else if (lower && nums){
+      characters += lowerChar + numsChar;
+      }
+      else if (lower && special){
+      characters += lowerChar + specialChar;
+      }
+      else if (upper){
+      characters += upperChar;
+      }
+      else if(nums){
+      characters += numsChar;
+      }
+      else if (special){
+      characters += specialChar;  
+      }
+      else 
+      {characters += lowerChar;
+      }
+
+      for(var i = 0; i < passLength; i++){
+      password += characters.charAt(Math.floor(Math.random() * characters.length));
+
+    }
+      return password;
   }
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
