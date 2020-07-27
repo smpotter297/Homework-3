@@ -29,7 +29,7 @@ function writePassword() {
         var special = confirm("Do you want to include special characters?");
        }   
       
-    //var testing  
+    //var input testing  
     //console.log(passLength);
     //console.log(lower);
     //console.log(upper);
@@ -38,59 +38,29 @@ function writePassword() {
 
     // function to generate the password //
     function generatePassword() {  
+     //variables for random password generation code//
       var lowerChar = "abcdefghijklmnopqrstuvwxyz";
       var upperChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       var numsChar = "0123456789";
       var specialChar = "!@#$%^&*()_-+={}[];:'`~<,>.?/|"
       var characters = "";
       var password = "";
-
-      if (lower && upper && nums && special){
-      characters += lowerChar + upperChar + numsChar + specialChar;
-      }
-      if (upper && nums && special){
-      characters += upperChar + numsChar + specialChar;
-      }
-      else if (lower && upper && nums){
-      characters += lowerChar + upperChar + numsChar;
-      }
-      else if (upper && nums){
-      characters += upperChar + numsChar;
-      }
-      else if (lower && nums && special){
-      characters += lowerChar + numsChar + specialChar;
-      }
-      else if (nums && special){
-      characters += numsChar + specialChar;
-      }
-      else if (lower && upper && special){
-      characters += lowerChar + upperChar + specialChar;
-      }
-      else if (upper && special){
-      characters += upperChar + specialChar;
-      }
-      else if (lower && upper){
-        characters += lowerChar + upperChar;
-      }
-      else if (lower && nums){
-      characters += lowerChar + numsChar;
-      }
-      else if (lower && special){
-      characters += lowerChar + specialChar;
-      }
-      else if (upper){
-      characters += upperChar;
-      }
-      else if(nums){
-      characters += numsChar;
-      }
-      else if (special){
-      characters += specialChar;  
-      }
-      else 
-      {characters += lowerChar;
-      }
-
+     
+      //Logic statements to create chracters vr based on user assigned parameters. Simplified version//
+     
+        if (lower === true){
+          characters += lowerChar
+        }
+        if (upper === true){
+          characters += upperChar
+        }
+        if (nums === true){
+          characters += numsChar
+        }
+        if (special === true){
+          characters += specialChar
+        } 
+      //for loop to create random password based on assigned parameters.//
       for(var i = 0; i < passLength; i++){
       password += characters.charAt(Math.floor(Math.random() * characters.length));
 
