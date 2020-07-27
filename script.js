@@ -10,7 +10,7 @@ function writePassword() {
     var passLength = parseInt(prompt("Enter the number of characters between 8 and 128 for your password."));
     
     //validate passLength is within parameter requirements //
-    while (passLength < 8 || passLength > 128) {
+    while (passLength < 8 || passLength > 128){
       var passLength = parseInt(prompt("Invalid number of characters entered. Enter the number of characters between 8 and 128 for your pssword."));
     }
       //collect character type with confirm//
@@ -67,12 +67,29 @@ function writePassword() {
     }
       return password;
   }
+  //assign password var and send random password to browser//
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
 }
+
+//variable for copy password code//
+var copypass = document.querySelector("#passcopy");
+
+
+// code to copy the password from browser //
+function copyPassword() {
+    document.getElementById("password").select();
+    document.execCommand("Copy");
+    alert("Password successfully copied to the clipboard");
+}
+
+// Add event listener for copy button click//
+copypass.addEventListener("click", function () {
+copyPassword();
+});
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
