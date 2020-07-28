@@ -7,11 +7,12 @@ function writePassword() {
   
 
     //collect length of password parameter through prompt as a number type//
-    var passLength = parseInt(prompt("Enter the number of characters between 8 and 128 for your password."));
+    var passLength = Number(prompt("Enter the number of characters between 8 and 128 for your password."));
     
     //validate passLength is within parameter requirements //
-    while (passLength < 8 || passLength > 128){
-      var passLength = parseInt(prompt("Invalid number of characters entered. Enter the number of characters between 8 and 128 for your pssword."));
+    //Thanks Caleb for the isNaN function tip//
+    while (passLength < 8 || passLength > 128 || isNaN(passLength)){
+      var passLength = Number(prompt("Invalid number of characters entered. Enter the number of characters between 8 and 128 for your pssword."));
     }
       //collect character type with confirm//
     var lower = confirm("Do you want to include lower case letters?");
